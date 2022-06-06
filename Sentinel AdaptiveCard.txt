@@ -1,0 +1,151 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.4",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "New Sentinel incident created",
+            "wrap": true,
+            "size": "Large"
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://connectoricons-prod.azureedge.net/releases/v1.0.1391/1.0.1391.2130/azuresentinel/icon.png",
+                            "size": "Small",
+                            "style": "Person"
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "[Click here to view the Incident]",
+                            "wrap": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "FactSet",
+            "facts": [
+                {
+                    "title": "Incident Title",
+                    "value": "Value 1"
+                },
+                {
+                    "title": "Incident ID",
+                    "value": "Value 2"
+                },
+                {
+                    "title": "Incident Creation Time (UTC)",
+                    "value": "Value 3 "
+                },
+                {
+                    "title": "Severity",
+                    "value": "Value 4"
+                },
+                {
+                    "title": "Alert Providers",
+                    "value": "Value 5"
+                },
+                {
+                    "title": "Tactics",
+                    "value": "Value 6"
+                },
+                {
+                    "title": "Incident Description",
+                    "value": "Value 7"
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "Respond:",
+            "wrap": true,
+            "spacing": "Large",
+            "separator": true,
+            "size": "Large",
+            "weight": "Bolder"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Close Microsoft Sentinel incident?",
+            "wrap": true
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "choices": [
+                {
+                    "title": "Close incident - False Positive",
+                    "value": "FalsePositive – IncorrectAlertLogic"
+                },
+                {
+                    "title": "Close incident - True Positive",
+                    "value": "TruePositive – SuspiciousActivity"
+                },
+                {
+                    "title": "Close incident - Benign Positive",
+                    "value": "BenignPositive – SuspiciousButExpected"
+                },
+                {
+                    "title": "Don't close the incident",
+                    "value": "no"
+                }
+            ],
+            "placeholder": "no",
+            "id": "incidentStatus"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Change Microsoft Sentinel incident severity?",
+            "wrap": true
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "choices": [
+                {
+                    "title": "High",
+                    "value": "High"
+                },
+                {
+                    "title": "Medium",
+                    "value": "Medium"
+                },
+                {
+                    "title": "Low",
+                    "value": "Low"
+                },
+                {
+                    "title": "Informational",
+                    "value": "Informational"
+                },
+                {
+                    "title": "Don't change",
+                    "value": "same"
+                }
+            ],
+            "placeholder": "same"
+        },
+        {
+            "type": "ActionSet",
+            "actions": [
+                {
+                    "type": "Action.Submit",
+                    "title": "Submit response"
+                }
+            ]
+        }
+    ]
+}
