@@ -38,34 +38,41 @@
     {
       "facts": [
         {
-          "title": "Incident Title",
+          "title": "Incident Title:",
           "value": "@{triggerBody()?['object']?['properties']?['title']}"
         },
         {
-          "title": "Incident ID",
+          "title": "Incident ID:",
           "value": "@{triggerBody()?['object']?['properties']?['incidentNumber']}"
         },
         {
-          "title": "Incident Creation Time (UTC)",
+          "title": "Incident Creation Time (UTC):",
           "value": "@{triggerBody()?['object']?['properties']?['createdTimeUtc']}"
         },
         {
-          "title": "Severity",
+          "title": "Severity:",
           "value": "@{triggerBody()?['object']?['properties']?['severity']}"
         },
         {
-          "title": "Alert Providers",
+          "title": "Alert Providers:",
           "value": "@{join(triggerBody()?['object']?['properties']?['additionalData']?['alertProductNames'],'; ')}"
         },
         {
-          "title": "Tactics",
+          "title": "Tactics:",
           "value": "@{join(triggerBody()?['object']?['properties']?['additionalData']?['tactics'], '; ') }"
         },
         {
-          "title": "Incident Description",
+          "title": "Incident Description:",
           "value": "@{triggerBody()?['object']?['properties']?['description']}"
+        },
+        {
+          "title": "Entities:"
         }
       ],
+      "type": "FactSet"
+    },
+    {
+      "facts": @{body('Select_-_Entities')},
       "type": "FactSet"
     }
   ],
