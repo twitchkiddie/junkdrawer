@@ -1,0 +1,74 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "size": "Large",
+      "text": "New Sentinel incident created",
+      "type": "TextBlock",
+      "wrap": true
+    },
+    {
+      "columns": [
+        {
+          "items": [
+            {
+              "size": "Small",
+              "style": "Person",
+              "type": "Image",
+              "url": "https://connectoricons-prod.azureedge.net/releases/v1.0.1391/1.0.1391.2130/azuresentinel/icon.png"
+            }
+          ],
+          "type": "Column",
+          "width": "stretch"
+        },
+        {
+          "items": [
+            {
+              "text": "[Click here to view the Incident](@{triggerBody()?['object']?['properties']?['incidentUrl']})",
+              "type": "TextBlock",
+              "wrap": true
+            }
+          ],
+          "type": "Column",
+          "width": "stretch"
+        }
+      ],
+      "type": "ColumnSet"
+    },
+    {
+      "facts": [
+        {
+          "title": "Incident Title",
+          "value": "@{triggerBody()?['object']?['properties']?['title']}"
+        },
+        {
+          "title": "Incident ID",
+          "value": "@{triggerBody()?['object']?['properties']?['incidentNumber']}"
+        },
+        {
+          "title": "Incident Creation Time (UTC)",
+          "value": "@{triggerBody()?['object']?['properties']?['createdTimeUtc']}"
+        },
+        {
+          "title": "Severity",
+          "value": "@{triggerBody()?['object']?['properties']?['severity']}"
+        },
+        {
+          "title": "Alert Providers",
+          "value": "@{join(triggerBody()?['object']?['properties']?['additionalData']?['alertProductNames'],'; ')}"
+        },
+        {
+          "title": "Tactics",
+          "value": "@{join(triggerBody()?['object']?['properties']?['additionalData']?['tactics'], '; ') }"
+        },
+        {
+          "title": "Incident Description",
+          "value": "@{triggerBody()?['object']?['properties']?['description']}"
+        }
+      ],
+      "type": "FactSet"
+    }
+  ],
+  "type": "AdaptiveCard",
+  "version": "1.4"
+}
